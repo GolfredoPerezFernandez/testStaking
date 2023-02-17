@@ -1,0 +1,122 @@
+ // SPDX-License-Identifier: MIT
+ pragma solidity ^0.8.0;
+
+ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+ import "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
+ import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+ import "@openzeppelin/contracts/access/Ownable.sol";
+ 
+ contract ERC721Staking is Ownable, ReentrancyGuard {
+     using SafeERC20 for IERC20;
+     IERC20 public immutable rewardsToken;
+     IERC721 public immutable nftCollection;
+ 
+     struct Staker {
+         uint256 amountStaked;
+         uint256 timeOfLastUpdate;
+         uint256 unclaimedRewards;
+         uint256 numberOfNfts;
+         uint256[] tokenIds;
+     }
+ 
+     uint256 private rewardsPerHour = 100000;
+     mapping(address => Staker) public stakers;
+     mapping(uint256 => address) public stakerAddress;
+     address[] public stakersArray;
+     
+     constructor(IERC721 _nftCollection, IERC20 _rewardsToken) {
+         nftCollection = _nftCollection;
+         rewardsToken = _rewardsToken;
+     }
+ 
+     event Staked(address indexed user, uint256[] tokenIds);
+     event Withdrawn(address indexed user, uint256[] tokenIds);
+     event Claimed(address indexed user, uint256 amount);
+     event RewardsPerHourSet(uint256 newValue);
+ 
+     function stake(uint256[] calldata _tokenIds) external nonReentrant {
+         if (stakers[msg.sender].amountStaked > 0) {
+             uint256 rewards = calculateRewards(msg.sender);
+             stakers[msg.sender].unclaimedRewards += rewards;
+         } else {
+             stakersArray.push(msg.sender);
+         }
+         uint256 len = _tokenIds.length;
+         for (uint256 i; i < len; ++i) {
+             require(nftCollection.ownerOf(_tokenIds[i]) == msg.sender, "Can't stake tokens you don't own!");
+             nftCollection.safeTransferFrom(msg.sender, address(this), _tokenIds[i]);
+             stakerAddress[_tokenIds[i]] = msg.sender;
+             stakers[msg.sender].numberOfNfts++;
+             stakers[msg.sender].tokenIds.push(_tokenIds[i]);
+         }
+         stakers[msg.sender].amountStaked += len;
+         stakers[msg.sender].timeOfLastUpdate = block.timestamp;
+         emit Staked(msg.sender, _tokenIds);
+     }
+ 
+     function withdraw(uint256[] calldata _tokenIds) external nonReentrant {
+         require(stakers[msg.sender].amountStaked > 0, "You have no tokens staked");
+         uint256 rewards = calculateRewards(msg.sender);
+         stakers[msg.sender].unclaimedRewards += rewards;
+         uint256 len = _tokenIds.length;
+         for (uint256 i; i < len; ++i) {
+             require(stakerAddress[_tokenIds[i]] == msg.sender, "Only original staker can withdraw the token");
+             stakerAddress[_tokenIds[i]] = address(0);
+             nftCollection.safeTransferFrom(address(this), msg.sender, _tokenIds[i]);
+             stakers[msg.sender].numberOfNfts--;
+             uint256 index;
+             for (uint256 j = 0; j < stakers[msg.sender].tokenIds.length; j++) {
+                 if(stakers[msg.sender].tokenIds[j] == _tokenIds[i]) {
+                 index = j;
+                 break;
+             }
+         }
+         stakers[msg.sender].tokenIds[index] = stakers[msg.sender].tokenIds[stakers[msg.sender].tokenIds.length - 1];
+         stakers[msg.sender].tokenIds.pop();
+     }
+     stakers[msg.sender].amountStaked -= len;
+     stakers[msg.sender].timeOfLastUpdate = block.timestamp;
+     if (stakers[msg.sender].amountStaked == 0) {
+         removeStaker(msg.sender);
+     }
+     emit Withdrawn(msg.sender, _tokenIds);
+ }
+ 
+ function removeStaker(address staker) internal {
+     uint256 length = stakersArray.length;
+     for (uint256 i = 0; i < length; i++) {
+         if (stakersArray[i] == staker) {
+             stakersArray[i] = stakersArray[length - 1];
+             stakersArray.pop();
+             break;
+         }
+     }
+ }
+ function calculateRewards(address _stakerAddress) public view returns (uint256) {
+     uint256 timeDiff = block.timestamp - stakers[_stakerAddress].timeOfLastUpdate;
+     uint256 stakedAmount = stakers[_stakerAddress].amountStaked;
+     uint256 rewardsRate = rewardsPerHour * 1e18 / 3600;
+     uint256 rewardsEarned = stakedAmount * timeDiff * rewardsRate / 1e18;
+     return rewardsEarned;
+ }
+ function claimRewards() external nonReentrant {
+     uint256 rewards = stakers[msg.sender].unclaimedRewards;
+     require(rewards > 0, "You have no rewards to claim");
+     stakers[msg.sender].unclaimedRewards = 0;
+     rewardsToken.safeTransfer(msg.sender, rewards);
+     emit Claimed(msg.sender, rewards);
+ }
+ function setRewardsPerHour(uint256 _newRewardsPerHour) external onlyOwner {
+     rewardsPerHour = _newRewardsPerHour;
+     emit RewardsPerHourSet(_newRewardsPerHour);
+ }
+ function numberOfStakers() public view returns (uint256) {
+     return stakersArray.length;
+ }
+ function getStaker(uint256 _index) public view returns (address, uint256, uint256, uint256, uint256[] memory) {
+     Staker memory staker = stakers[stakersArray[_index]];
+     return (stakersArray[_index], staker.amountStaked, staker.timeOfLastUpdate, staker.unclaimedRewards, staker.tokenIds);
+ }
+ }
