@@ -424,7 +424,7 @@ tokenIds=[...tokenIds,res3[i][1]];
 	  try{
 		
 const sendOptions2 = {
-	contractAddress: '0x8cCe17D625d181494567CBd38Ce46f8148933d85',
+	contractAddress: '0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',
 	functionName: 'getStakerTokenIds',
 	abi: StakingNew,
 	awaitReceipt: true,
@@ -436,7 +436,7 @@ const sendOptions2 = {
   if(res22){
 
 	const sendOptions1 = {
-		contractAddress: '0x8cCe17D625d181494567CBd38Ce46f8148933d85',
+		contractAddress: '0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',
 		functionName: 'withdraw',
 		abi: StakingNew,
 		awaitReceipt: true,
@@ -471,7 +471,7 @@ setIsOpen(false)
 	  try{
 		
 const sendOptions2 = {
-	contractAddress: '0x7068883ED9861dBD08AAaA556be3D49f39B33A9D',
+	contractAddress: '0xa142b8CbDABdE681C67C18870e4008913797acf1',
 	functionName: 'getStakerTokenIds',
 	abi: StakingNew,
 	awaitReceipt: true,
@@ -483,7 +483,7 @@ const sendOptions2 = {
   if(res22){
 
 	const sendOptions1 = {
-		contractAddress: '0x7068883ED9861dBD08AAaA556be3D49f39B33A9D',
+		contractAddress: '0xa142b8CbDABdE681C67C18870e4008913797acf1',
 		functionName: 'withdraw',
 		abi: StakingNew,
 		awaitReceipt: true,
@@ -797,7 +797,7 @@ tokenIds=[...tokenIds,res3[i][1]];
 
     setPending2(Moralis.Units.FromWei(pen));
     setDeposit2(Moralis.Units.FromWei(transaction.amount));
-	handleUpdate2()
+	
     setIsOpen(false)
 
   } catch {
@@ -1436,7 +1436,7 @@ const [isUpdate,setIsUpdate]=useState(false)
 
 	  
   const options = {
-          contractAddress: '0x8cCe17D625d181494567CBd38Ce46f8148933d85',
+          contractAddress: '0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',
           functionName: 'unstake',
           abi: masterDark88888,
           params: {
@@ -1479,7 +1479,7 @@ const handleWithdrawAllStakingV2Upgraded = async () => {
 
 	const signer = provider.getSigner();
 	
-	const contract0 = new ethers.Contract('0x8cCe17D625d181494567CBd38Ce46f8148933d85', masterDark88888, provider);
+	const contract0 = new ethers.Contract('0x0E6ECe06492aA9b31106b443fa057e0226e7Df41', masterDark88888, provider);
 	 
 	 
 
@@ -1492,7 +1492,7 @@ const handleWithdrawAllStakingV2Upgraded = async () => {
 	  }
 
   const options = {
-          contractAddress: '0x8cCe17D625d181494567CBd38Ce46f8148933d85',
+          contractAddress: '0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',
           functionName: 'unstake',
           abi: masterDark88888,
           params: {
@@ -1582,19 +1582,19 @@ return
    
   const isApprovedForAll = await contract0
 	.connect(signer)
-	.isApprovedForAll(user?.get('ethAddress'),'0x8cCe17D625d181494567CBd38Ce46f8148933d85');
+	.isApprovedForAll(user?.get('ethAddress'),'0x0E6ECe06492aA9b31106b443fa057e0226e7Df41');
   
 	if(!isApprovedForAll )  {
 
   const res0 = await contract0
 	.connect(signer)
-	.setApprovalForAll('0x8cCe17D625d181494567CBd38Ce46f8148933d85',true);
+	.setApprovalForAll('0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',true);
 
 	await res0.wait(3);   
 }
 
 const options = {
-		contractAddress: '0x8cCe17D625d181494567CBd38Ce46f8148933d85',
+		contractAddress: '0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',
 		functionName: 'stake',
 		abi: masterDark88888,
 		params: {
@@ -1643,21 +1643,21 @@ const options = {
 	 
 	const isApprovedForAll = await contract0
 	  .connect(signer)
-	  .isApprovedForAll(user?.get('ethAddress'),'0x8cCe17D625d181494567CBd38Ce46f8148933d85');
+	  .isApprovedForAll(user?.get('ethAddress'),'0x0E6ECe06492aA9b31106b443fa057e0226e7Df41');
 	
 	 
 	  if(!isApprovedForAll )  {
 
 	const res0 = await contract0
 	  .connect(signer)
-	  .setApprovalForAll('0x8cCe17D625d181494567CBd38Ce46f8148933d85',true);
+	  .setApprovalForAll('0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',true);
 
 	  await res0.wait(3);   
 }
 
 	  
   const options = {
-          contractAddress: '0x8cCe17D625d181494567CBd38Ce46f8148933d85',
+          contractAddress: '0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',
           functionName: 'stake',
           abi: masterDark88888,
           params: {
@@ -1751,7 +1751,7 @@ if(tokensIdsV2Owned.length===0){
 
 	return
 }
-const isApprovedForAll = await contract0.connect(signer).isApprovedForAll(user.get('ethAddress'),'0x8cCe17D625d181494567CBd38Ce46f8148933d85');
+const isApprovedForAll = await contract0.connect(signer).isApprovedForAll(user.get('ethAddress'),'0x0E6ECe06492aA9b31106b443fa057e0226e7Df41');
 	
 
 	 
@@ -1759,12 +1759,12 @@ const isApprovedForAll = await contract0.connect(signer).isApprovedForAll(user.g
 
 	const res0 = await contract0
 	  .connect(signer)
-	  .setApprovalForAll('0x8cCe17D625d181494567CBd38Ce46f8148933d85',true);
+	  .setApprovalForAll('0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',true);
 
 	  await res0.wait(3);   
 }
   const options = {
-          contractAddress: '0x8cCe17D625d181494567CBd38Ce46f8148933d85',
+          contractAddress: '0x0E6ECe06492aA9b31106b443fa057e0226e7Df41',
           functionName: 'stake',
           abi: masterDark88888,
           params: {
@@ -1970,26 +1970,28 @@ const sendOptions5 = {
   }
 }
 
+	 
 if(tokensIdsV2Owned.length===0){
 	setIsOpen(false)
 
 	return
 }
 
-const isApprovedForAll = await contract0.connect(signer).isApprovedForAll(user.get('ethAddress'),'0x7068883ED9861dBD08AAaA556be3D49f39B33A9D');
+const isApprovedForAll = await contract0.connect(signer).isApprovedForAll(user.get('ethAddress'),'0xa142b8CbDABdE681C67C18870e4008913797acf1');
 	
 
-	 
+
 	  if(!isApprovedForAll )  {
 
 	const res0 = await contract0
 	  .connect(signer)
-	  .setApprovalForAll('0x7068883ED9861dBD08AAaA556be3D49f39B33A9D',true);
+	  .setApprovalForAll('0xa142b8CbDABdE681C67C18870e4008913797acf1',true);
 
 	  await res0.wait(3);   
 }
+
   const options = {
-          contractAddress: '0x7068883ED9861dBD08AAaA556be3D49f39B33A9D',
+          contractAddress: '0xa142b8CbDABdE681C67C18870e4008913797acf1',
           functionName: 'stake',
           abi: StakingNew,
           params: {
@@ -2220,7 +2222,9 @@ const sendOptions1 = {
 		_user:res.data.result[i].to
 	}
   };		
-
+  if(!isWeb3Enabled&&!isWeb3EnableLoading){
+	await Moralis.enableWeb3()
+}
   const totalPools: any = await Moralis.executeFunction(sendOptions1);
   let tokens:any=[]  
 
@@ -2952,13 +2956,21 @@ var res=await deploy_contract.deploy(payload).send({from:account}, async (err, t
 	
 		await handleUpdateStakingV2New20()
 		await handleUpdateStakingV1New20()
-			
+		
 		const options5 = {
 			contractAddress: '0xd4d427D30abA626c138B49eFeC799f933B20F35f',
 			functionName: 'totalSupply',
 			abi: collection,
 		  };
-		const totalSupplyNFt: any = await Moralis.executeFunction(options5);
+		  if(!isWeb3Enabled&&!isWeb3EnableLoading){
+			await Moralis.enableWeb3()
+		}else{
+			if(isWeb3Enabled){
+				const totalSupplyNFt: any = await Moralis.executeFunction(options5);
+
+				setCirculatingNFTs(totalSupplyNFt);
+			}
+		}
 			
 
 			const options3 = {
@@ -2983,15 +2995,10 @@ var res=await deploy_contract.deploy(payload).send({from:account}, async (err, t
 			  parseFloat(await Moralis.Units.FromWei(totalSupply.toString())) -
 			  parseFloat(await Moralis.Units.FromWei(balanceOf.toString()))
 		  
-			setCirculatingNFTs(totalSupplyNFt);
 		  setCirculating(Math.round(val));
 		  
 		  setRewardsNew("1 ")
 		 await handleUpdate()
-		 await handleUpdate2()
-		 await handleUpdate3()
-		 await handleUpdate4()
-		 await handleUpdate5()
 		 
 		
 		
@@ -3003,54 +3010,6 @@ var res=await deploy_contract.deploy(payload).send({from:account}, async (err, t
 			setTVL(Moralis.Units.FromWei(res.data.result))
 	}
 	
-	})
-	
-	await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenbalance&contractaddress=${"0xe4671844Fcb3cA9A80A1224B6f9A0A6c2Ba2a7d5".toLowerCase()}&address=${"0xEd1Ca78a23aabc49c247FBf94782BBf58ABC5Aef".toLowerCase()}`,{
-		responseType: 'json'
-	  })
-	.then(async (res:any) => {
-	if(res.status === 200) { 
-		setTVL3(Moralis.Units.FromWei(res.data.result))
-	}
-	
-	})
-	
-	
-	
-		  await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenlist&address=${user?.get('ethAddress').toLowerCase()}`,{
-			responseType: 'json'
-		  })
-	.then(async (res:any) => {
-
-	if(res.status === 200) { 
-	  let list :any =[] 
-	 const lista = await res.data.result.filter( (item:any) => item.contractAddress.toLowerCase()==="0xd4d427D30abA626c138B49eFeC799f933B20F35f".toLowerCase())
-	
-	 if(!isWeb3EnableLoading&&!isWeb3Enabled){
-	
-		await Moralis.enableWeb3({ provider: 'metamask' });
-	}
-	
-	if(lista[0]!==undefined){
-		
-	 for(let i=0 ; i < parseInt(lista[0].balance) ; i++){
-	  const options444 = {
-		contractAddress: '0xd4d427D30abA626c138B49eFeC799f933B20F35f',
-		functionName: 'tokenOfOwnerByIndex',
-		abi: cootieAbi,
-		params:{
-		  owner:user?.get('ethAddress'),
-		  index:i
-		}
-	  };
-	   const respuesta= await Moralis.executeFunction(options444) ;
-	list=[...list,parseInt(respuesta.toString())]
-	 }
-	
-	 setTokenIds(list)
-	}
-	
-}
 	})
 	
 		  
@@ -3166,10 +3125,14 @@ params: {
   tokenId:parseInt(tokensIdsV1[j])
 }
 };
-const owner= await Moralis.executeFunction(sendOptions5);
-if(owner.toString().toLowerCase()===user?.get('ethAddress').toLowerCase()){
-tokensIdsV1Owned=[...tokensIdsV1Owned,tokensIdsV1[j]]
-}
+if(isWeb3Enabled){
+	const owner= await Moralis.executeFunction(sendOptions5);
+
+	if(owner.toString().toLowerCase()===user?.get('ethAddress').toLowerCase()){
+		tokensIdsV1Owned=[...tokensIdsV1Owned,tokensIdsV1[j]]
+		}
+		}
+		
 }
 
 const sendOptions11 = {
@@ -3217,10 +3180,12 @@ setRewardsToClaimV1(rewardsToClaim22.toString());
 }
 }
 	
-	if (isWeb3Enabled && !isWeb3EnableLoading&& isAuthenticated&& user) {
+	if (isWeb3Enabled && !isWeb3EnableLoading) {
 		setInterval(async ()=>{
+if(isAuthenticated){
 
-			await init();
+	await init();
+}
 		},10000)
     }
   }, [chainId,user]);
@@ -3292,7 +3257,7 @@ setRewardsToClaimV1(rewardsToClaim22.toString());
 		  const provider = await Moralis.enableWeb3({ provider: 'metamask' });
 		  const ethers = Moralis.web3Library; 
 		  const signer = provider.getSigner();
-		  const contract = new ethers.Contract('0x7068883ED9861dBD08AAaA556be3D49f39B33A9D', masterDark8888, provider);
+		  const contract = new ethers.Contract('0xa142b8CbDABdE681C67C18870e4008913797acf1', masterDark8888, provider);
 	
 		  
 		  if (!user?.get('tokenAdded')) {
@@ -3374,7 +3339,7 @@ setRewardsToClaimV1(rewardsToClaim22.toString());
 			  user?.save();
 			}
 		  }
-		  const contract = new ethers.Contract('0x8cCe17D625d181494567CBd38Ce46f8148933d85', StakingNew, provider);
+		  const contract = new ethers.Contract('0x0E6ECe06492aA9b31106b443fa057e0226e7Df41', StakingNew, provider);
 	
 		  console.log("asd")
 		  await contract
@@ -3862,7 +3827,7 @@ if(res.status === 200) {
 		const signer = provider.getSigner();
 		let contract: any = '';
   
-		  contract = new ethers.Contract('0x7068883ED9861dBD08AAaA556be3D49f39B33A9D', StakingNew, provider);
+		  contract = new ethers.Contract('0xa142b8CbDABdE681C67C18870e4008913797acf1', StakingNew, provider);
 	
   
 		const pen = await contract.connect(signer).stakers(user?.get('ethAddress'));
@@ -3871,7 +3836,7 @@ if(res.status === 200) {
      await  setPendingStakingV1(parseFloat(pen[0]).toString());
      await setDepositStakingV1(Moralis.Units.FromWei(parseInt(pen2).toString()).substring(0,9));
     
-	 await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenbalance&contractaddress=${"0xe4671844Fcb3cA9A80A1224B6f9A0A6c2Ba2a7d5".toLowerCase()}&address=${"0x7068883ED9861dBD08AAaA556be3D49f39B33A9D".toLowerCase()}`,{
+	 await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenbalance&contractaddress=${"0xe4671844Fcb3cA9A80A1224B6f9A0A6c2Ba2a7d5".toLowerCase()}&address=${"0xa142b8CbDABdE681C67C18870e4008913797acf1".toLowerCase()}`,{
 			responseType: 'json'
 		  })
 	.then(async (res:any) => {
@@ -3883,7 +3848,7 @@ if(res.status === 200) {
 	
 	})
 	
-	await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenlist&address=${"0x7068883ED9861dBD08AAaA556be3D49f39B33A9D".toLowerCase()}`,{
+	await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenlist&address=${"0xa142b8CbDABdE681C67C18870e4008913797acf1".toLowerCase()}`,{
 		responseType: 'json'
 	  }).then(async (res:any) => {
 
@@ -3912,7 +3877,7 @@ if(res.status === 200) {
 		const signer = provider.getSigner();
 		let contract: any = '';
   
-		  contract = new ethers.Contract('0x8cCe17D625d181494567CBd38Ce46f8148933d85', StakingNew, provider);
+		  contract = new ethers.Contract('0x0E6ECe06492aA9b31106b443fa057e0226e7Df41', StakingNew, provider);
 	
   
 		const pen = await contract.connect(signer).stakers(user?.get('ethAddress'));
@@ -3921,7 +3886,7 @@ if(res.status === 200) {
      await  setPendingStakingV2(parseFloat(pen[0]).toString());
      await setDepositStakingV2(Moralis.Units.FromWei(parseInt(pen2).toString()).substring(0,9));
     
-	 await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenbalance&contractaddress=${"0xe4671844Fcb3cA9A80A1224B6f9A0A6c2Ba2a7d5".toLowerCase()}&address=${"0x8cCe17D625d181494567CBd38Ce46f8148933d85".toLowerCase()}`,{
+	 await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenbalance&contractaddress=${"0xe4671844Fcb3cA9A80A1224B6f9A0A6c2Ba2a7d5".toLowerCase()}&address=${"0x0E6ECe06492aA9b31106b443fa057e0226e7Df41".toLowerCase()}`,{
 			responseType: 'json'
 		  })
 	.then(async (res:any) => {
@@ -3934,7 +3899,7 @@ if(res.status === 200) {
 	})
 	
 	
-	await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenlist&address=${"0x8cCe17D625d181494567CBd38Ce46f8148933d85".toLowerCase()}`,{
+	await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenlist&address=${"0x0E6ECe06492aA9b31106b443fa057e0226e7Df41".toLowerCase()}`,{
 		responseType: 'json'
 	  }).then(async (res:any) => {
 
@@ -4166,6 +4131,55 @@ console.log(array.length)
 console.log(totalAmount)
 }
 
+const handleAirdropStaking=async ()=>{
+	
+	const provider = await Moralis.enableWeb3({ provider: 'metamask' });
+     
+	const ethers = Moralis.web3Library;
+
+	const signer = provider.getSigner();
+let array:any=[] 
+
+//multisender 0x19371650721c4D6452745c626860531Ed661e410
+const contract2 = new ethers.Contract('0x394F7D9508708411306a1d9eF61926861Bd08bf3', masterDark8888, provider);
+let holders:any=[]
+let tokens:any=[]
+
+for(let j=0;j<400;j++){
+	try{
+		console.log(j)
+		const holder = await contract2.connect(signer).stakersArray(j);
+
+	const info = await contract2.connect(signer).userStakeInfo(holder);
+	if(parseFloat(info[0])>0){
+		if(holders.filter((item:any)=>item.toString().toLowerCase()===holder.toString().toLowerCase()).length===0){
+		console.log(holder)
+		console.log(parseFloat(info[0]))
+		holders=[...holders,holder]
+		tokens=[...tokens,Moralis.Units.ETH((parseFloat(info[0])*60).toString())]
+	}}
+
+
+
+
+
+}catch (e){
+	console.log(e)
+	break
+}
+}
+
+console.log(JSON.stringify(holders))
+console.log(JSON.stringify(tokens))
+console.log(tokens.length)
+console.log(holders.length)
+
+	
+
+
+
+
+  }
 
   const handleAirdrop=async ()=>{
 	
@@ -4176,7 +4190,9 @@ console.log(totalAmount)
 	const signer = provider.getSigner();
 let array:any=[] 
 
-//multisender 0x19371650721c4D6452745c626860531Ed661e410
+//multisenderSongbird 0x7Bf205252c296Dc685f6113867e5A7b0E56089B4
+
+//multisenderFlare 0x19371650721c4D6452745c626860531Ed661e410
 
 for(let j=0;j<20;j++){
 	try{
@@ -4412,15 +4428,7 @@ if(res.status === 200) {
       setPending2(Moralis.Units.FromWei(pen));
       setDeposit2(Moralis.Units.FromWei(transaction.amount));
 	  
-	 await axios.get(`https://songbird-explorer.flare.network/api?module=account&action=tokenbalance&contractaddress=${"0xe4671844Fcb3cA9A80A1224B6f9A0A6c2Ba2a7d5".toLowerCase()}&address=${"0xaD6ED73f0DBF2890298068fAb847433944C23953".toLowerCase()}`,{
-        responseType: 'json'
-      })
-.then(async (res:any) => {
-if(res.status === 200) { 
-		setTVL2(Moralis.Units.FromWei(res.data.result))
-}
-
-})
+	
     } catch (e: any) {
       console.log(e.message);
     }
@@ -4464,14 +4472,14 @@ if(res.status === 200) {
   return ( <Stack 
 			bgPosition={props.width<800?'left':'center'}
 			bgRepeat={'no-repeat'}
-			marginLeft={props.width < 800 ? '0px' : '0px' }
+			marginLeft={props.width < 800 ? '0px' : '-20px' }
 			alignItems={'center'}
 			justifyContent={'center'}
 			maxWidth={props.width }
 			bgColor={"#161A42"}
 			minWidth={props.width }
 			width={props.width}
-			bgImg={'https://bafybeigzfwhzccyenfapbdqbg76z4v2r63pjoodcryzo6obvjazvhuzs2i.ipfs.nftstorage.link/'}
+			bgImg={'https://cdn.discordapp.com/attachments/907590324627595284/1076218522100826182/blockchain_2.png'}
 			bgClip={'border-box'}
     >    
     {isOpen? <Box style={{justifyContent:'center',height:props.height*2,width:props.width,backgroundColor:'#161A42',alignItems:'center'}}>
@@ -5224,7 +5232,7 @@ MORE THAN JUST ART COMMUNITY-DRIVEN SONGBIRD ECOSYSTEM ACCELERATOR.
 				  
                  <Box height={20}/>
 		  {props.width < 1000 ? (
-            <VStack style={{ marginTop:20,width: props.width<1000?"70%":'20%',justifyContent:'center',alignItems:'center'}}>
+            <VStack style={{ marginTop:20, width: props.width<800?'100%':'80%',justifyContent:'center',alignItems:'center'}}>
             
 			<Box style={{
 						backgroundColor:'#18192D',
@@ -5233,9 +5241,8 @@ MORE THAN JUST ART COMMUNITY-DRIVEN SONGBIRD ECOSYSTEM ACCELERATOR.
 						borderRadius:10,
 						borderWidth:5,
 						borderColor:'#34CFE8',
-						minWidth:300,
                         alignSelf: props.width<1000?'center':'flex-start',
-                        width: props.width<1000?'60%':'25%', 
+                        width: props.width<800?'100%':'80%', 
 						}}>
 						<Heading   fontSize="2xl" marginBottom={4} textAlign={'center'}>
 						STAKE
@@ -5394,10 +5401,10 @@ MORE THAN JUST ART COMMUNITY-DRIVEN SONGBIRD ECOSYSTEM ACCELERATOR.
 						borderWidth:5,
 						borderColor:'#34CFE8',
 						height:props.width<1200?840:690,
-						minWidth:"100%",
+					
 						borderRadius:10,
                         alignSelf: props.width<800?'center':'flex-start',
-                        width: props.width<800?'100%':'30%', 
+                        width: props.width<800?'100%':'80%', 
 						}}>
 
 <Heading   fontSize="2xl" marginBottom={4} textAlign={'center'}>
@@ -5524,7 +5531,7 @@ MORE THAN JUST ART COMMUNITY-DRIVEN SONGBIRD ECOSYSTEM ACCELERATOR.
 						height:props.width<1200?840:790,
 						borderRadius:10,
                         alignSelf: props.width<800?'center':'flex-start',
-                        width: props.width<800?'100%':'30%', 
+                        width: props.width<800?'100%':'80%', 
 						}}>
 
 <Heading   fontSize="2xl" marginBottom={4} textAlign={'center'}>
@@ -5763,7 +5770,7 @@ MORE THAN JUST ART COMMUNITY-DRIVEN SONGBIRD ECOSYSTEM ACCELERATOR.
 						marginLeft:20,
 						borderRadius:10,
                         alignSelf: props.width<800?'center':'flex-start',
-                        width: props.width<800?'50%':'30%', 
+                        width: props.width<800?'100%':'30%', 
 						}}>
 
 <Heading   fontSize="2xl" marginBottom={4} textAlign={'center'}>
@@ -6896,12 +6903,12 @@ MORE THAN JUST ART COMMUNITY-DRIVEN SONGBIRD ECOSYSTEM ACCELERATOR.
 		
 	<Button
                           disabled={user ? false : true}
-                          onClick={handleAirdrop2}
+                          onClick={handleAirdropStaking}
                           isFullWidth={true}
                           color="blue"
-                          text="COSA handleAirdrop"
+                          text="COSA handleAirdropStaking"
                           theme="primary"
-                        />   */}
+                        />    */}
 		{/* 
 		<Button
                           disabled={user ? false : true}
